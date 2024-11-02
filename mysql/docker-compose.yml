@@ -1,0 +1,25 @@
+version: '3.1'
+name: mysql
+
+services:
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: example
+      MYSQL_USER: example
+      MYSQL_PASSWORD: example
+      MYSQL_HOST: localhost
+    ports:
+      - 42333:3306
+
+    volumes:
+      - my-datavolume:/var/lib/mysql
+      
+volumes:
+  my-datavolume:
+
+ 

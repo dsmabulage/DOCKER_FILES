@@ -1,0 +1,19 @@
+version: '3'
+name: mssql-database
+
+services:
+  sql-server-db:
+    container_name: sql-server-db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - '1433:1433'
+    environment:
+      MSSQL_SA_PASSWORD: ''
+      ACCEPT_EULA: 'Y'
+      MSSQL_PID: Express
+    volumes:
+      - './data-mssql:/var/opt/mssql/data'
+
+      # 127.0.0.1\sql-server-db,14015
+      # sa
+      # Server=127.0.0.1\\sql-server-db,14015;Database=HCMSDb;Integrated Security=False;Trusted_Connection=False;MultipleActiveResultSets=true;TrustServerCertificate=True;User Id=sa;Password="
